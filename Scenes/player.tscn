@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1jdtp8uvd14j"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_hu6pk"]
+[ext_resource type="Texture2D" uid="uid://oj4bigvt328i" path="res://Assets/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Character_2.png" id="1_rps43"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yl2j4"]
+size = Vector2(16, 15)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_hu6pk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rps43")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yl2j4")
