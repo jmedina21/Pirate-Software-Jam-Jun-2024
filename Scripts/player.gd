@@ -18,7 +18,6 @@ func _input(event):
 	elif event.is_action_pressed("down"):
 		move_offset.y += 16
 
-	print(self.position)
 	# Attempt to move the player, and handle collision detection
 	var collision_info = move_and_collide(move_offset)
 	if collision_info:
