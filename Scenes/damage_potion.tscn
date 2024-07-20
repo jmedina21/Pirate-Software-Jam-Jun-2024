@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdgttr50gn3j4"]
+
+[ext_resource type="Texture2D" uid="uid://b4bmfvurkx0ef" path="res://Assets/green potion.png" id="1_5qvn4"]
+
+[sub_resource type="GDScript" id="GDScript_hlnh4"]
+script/source = "extends Area2D
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pctvg"]
+size = Vector2(6, 8)
+
+[node name="damage potion" type="Area2D"]
+collision_layer = 0
+collision_mask = 3
+script = SubResource("GDScript_hlnh4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pctvg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5qvn4")
+region_rect = Rect2(115, 147, 10, 11)
