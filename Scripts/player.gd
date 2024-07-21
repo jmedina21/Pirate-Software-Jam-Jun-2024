@@ -8,6 +8,8 @@ extends CharacterBody2D
 
 #var attack_ready = true
 var potion = preload("res://Scenes/damage_potion.tscn")
+var attack_potion_count = 5 
+
 
 func _input(event):
 	var move_offset = Vector2.ZERO
@@ -27,19 +29,9 @@ func _input(event):
 		move_offset.y += 16
 		update_arrow_position('down')		
 
-	# Fire proyectile
-	#elif event.is_action_pressed('action'):
-		#print($Marker2D.rotation, animated_arow.rotation)
-		#$Marker2D.position = currentPosition
-		#$Marker2D.rotation = animated_arow.rotation
-		#var potion_instance = potion.instantiate()
-		#potion_instance.rotation = $Marker2D.rotation
-		#potion_instance.position = $Marker2D.position
-		#add_child(potion_instance)
-		
-
 	# Attempt to move the player, and handle collision detection
 	var collision_info = move_and_collide(move_offset)
+	
 	if collision_info:
 		print("Blocked by wall", collision_info.get_position())
 	else:
@@ -53,6 +45,8 @@ func _process(delta):
 		fire_projectile()
 
 func fire_projectile():
+	if attack_potion_count == 0:
+		return
 	var potion_instance = potion.instantiate()
 	potion_instance.global_position = currentPosition
 	
@@ -72,9 +66,8 @@ func fire_projectile():
 	potion_instance.direction = direction
 
 	add_child(potion_instance)
+	attack_potion_count -= 1
 
-	# Debugging
-	print(potion_instance.direction)
 	
 func update_arrow_position(direction):
 	animated_arow.position.y = 0				

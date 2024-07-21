@@ -48,7 +48,7 @@ rotation = -1.5708
 scale = Vector2(0.71875, 0.78125)
 sprite_frames = SubResource("SpriteFrames_i2gad")
 autoplay = "default"
-frame_progress = 0.0646678
+frame_progress = 0.994623
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
