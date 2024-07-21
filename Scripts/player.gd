@@ -5,10 +5,12 @@ extends CharacterBody2D
 @onready var sprite_2d = $Sprite2D
 @onready var animated_arow = $Sprite2D/AnimatedSprite2D
 @onready var marker_2d = $Marker2D
+@onready var timer = $"../Timer"
 
 #var attack_ready = true
 var potion = preload("res://Scenes/damage_potion.tscn")
 var attack_potion_count = 5 
+var attack_on_cooldown = false
 
 
 func _input(event):
@@ -43,12 +45,15 @@ func _input(event):
 func _process(delta):
 	if Input.is_action_just_pressed('action'):
 		fire_projectile()
+	print(attack_on_cooldown)
 
 func fire_projectile():
-	if attack_potion_count == 0:
+	if attack_potion_count == 0 or attack_on_cooldown:
 		return
 	var potion_instance = potion.instantiate()
 	potion_instance.global_position = currentPosition
+	attack_on_cooldown = true
+	timer.start()
 	
 	# Set the projectile's direction vector based on the arrow's rotation
 	var direction: Vector2 = Vector2(1,0)
@@ -84,3 +89,8 @@ func update_arrow_position(direction):
 	elif direction == 'down':
 		animated_arow.rotation_degrees = 0
 		animated_arow.position.y = 10
+		
+
+func _on_timer_timeout():
+	Engine.time_scale = 1
+	attack_on_cooldown = false
