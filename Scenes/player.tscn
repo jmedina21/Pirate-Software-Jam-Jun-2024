@@ -1,7 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1jdtp8uvd14j"]
+[gd_scene load_steps=10 format=3 uid="uid://b1jdtp8uvd14j"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_hu6pk"]
 [ext_resource type="Texture2D" uid="uid://oj4bigvt328i" path="res://Assets/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Character_2.png" id="1_rps43"]
+[ext_resource type="Texture2D" uid="uid://d0krbdmv2p4ko" path="res://Assets/2D Pixel Dungeon Asset Pack/interface/arrow_1.png" id="3_f06nl"]
+[ext_resource type="Texture2D" uid="uid://b2xmnlhhnyyik" path="res://Assets/2D Pixel Dungeon Asset Pack/interface/arrow_2.png" id="4_v7w7v"]
+[ext_resource type="Texture2D" uid="uid://d0gkowh4fn1kc" path="res://Assets/2D Pixel Dungeon Asset Pack/interface/arrow_4.png" id="5_ryypg"]
+[ext_resource type="Texture2D" uid="uid://c8btxlwf0fatn" path="res://Assets/2D Pixel Dungeon Asset Pack/interface/arrow_3.png" id="6_tsts2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kbfq"]
+atlas = ExtResource("3_f06nl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i2gad"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kbfq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_v7w7v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ryypg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tsts2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yl2j4"]
 size = Vector2(13, 15)
@@ -14,5 +42,16 @@ texture = ExtResource("1_rps43")
 region_enabled = true
 region_rect = Rect2(33, 0, 13, 15)
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
+position = Vector2(8, 0)
+rotation = -1.5708
+scale = Vector2(0.71875, 0.78125)
+sprite_frames = SubResource("SpriteFrames_i2gad")
+autoplay = "default"
+frame_progress = 0.0646678
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_yl2j4")
+
+[node name="Marker2D" type="Marker2D" parent="."]
