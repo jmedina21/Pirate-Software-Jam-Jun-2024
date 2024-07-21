@@ -45,7 +45,6 @@ func _input(event):
 func _process(delta):
 	if Input.is_action_just_pressed('action'):
 		fire_projectile()
-	print(attack_on_cooldown)
 
 func fire_projectile():
 	if attack_potion_count == 0 or attack_on_cooldown:

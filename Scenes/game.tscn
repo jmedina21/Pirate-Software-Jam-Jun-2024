@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1ti3ijw23ck0"]
+[gd_scene load_steps=7 format=3 uid="uid://b1ti3ijw23ck0"]
 
 [ext_resource type="Texture2D" uid="uid://d1g1qurksljpr" path="res://Assets/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="1_5lm2e"]
 [ext_resource type="PackedScene" uid="uid://b1jdtp8uvd14j" path="res://Scenes/player.tscn" id="2_6rmbl"]
 [ext_resource type="PackedScene" uid="uid://d2nsjiihjwir2" path="res://Scenes/necromancer.tscn" id="3_cpyn6"]
+[ext_resource type="PackedScene" uid="uid://m4pv74wn7lav" path="res://Scenes/skelly.tscn" id="4_1haec"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ap7p6"]
 texture = ExtResource("1_5lm2e")
@@ -485,5 +486,8 @@ zoom = Vector2(5, 5)
 position = Vector2(-120, 8)
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Skelly" parent="." instance=ExtResource("4_1haec")]
+position = Vector2(-47, 10)
 
 [connection signal="timeout" from="Timer" to="Player" method="_on_timer_timeout"]

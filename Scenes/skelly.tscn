@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://m4pv74wn7lav"]
+
+[ext_resource type="Texture2D" uid="uid://oj4bigvt328i" path="res://Assets/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Character_2.png" id="1_pkukq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bl6ib"]
+size = Vector2(15, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmtfq"]
+size = Vector2(64, 64)
+
+[node name="Skelly" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pkukq")
+region_enabled = true
+region_rect = Rect2(65, 16, 15, 15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bl6ib")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_wmtfq")
