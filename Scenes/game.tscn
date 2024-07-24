@@ -488,6 +488,6 @@ position = Vector2(-120, 8)
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Skelly" parent="." instance=ExtResource("4_1haec")]
-position = Vector2(-47, 10)
+position = Vector2(-40, -8)
 
 [connection signal="timeout" from="Timer" to="Player" method="_on_timer_timeout"]

@@ -11,25 +11,39 @@ extends CharacterBody2D
 var potion = preload("res://Scenes/damage_potion.tscn")
 var attack_potion_count = 5 
 var attack_on_cooldown = false
+var char_direction: String = 'right'
+var arrow_direction: String = 'right'
 
 
 func _input(event):
 	var move_offset = Vector2.ZERO
 	
 	if event.is_action_pressed("left"):
+		if arrow_direction != 'left':
+			update_arrow_position('left')
+			char_direction = 'left'
+			return
 		move_offset.x -= 16
 		sprite_2d.flip_h = true
-		update_arrow_position('left')
 	elif event.is_action_pressed("right"):
+		if arrow_direction != 'right':
+			update_arrow_position('right')
+			char_direction = 'right'
+			return
 		move_offset.x += 16
 		sprite_2d.flip_h = false
-		update_arrow_position('right')
 	elif event.is_action_pressed("up"):
+		if arrow_direction != 'up':
+			update_arrow_position('up')
+			char_direction = 'up'
+			return
 		move_offset.y -= 16
-		update_arrow_position('up')		
 	elif event.is_action_pressed("down"):
+		if arrow_direction != 'down':
+			update_arrow_position('down')
+			char_direction = 'down'
+			return
 		move_offset.y += 16
-		update_arrow_position('down')		
 
 	# Attempt to move the player, and handle collision detection
 	var collision_info = move_and_collide(move_offset)
@@ -74,6 +88,7 @@ func fire_projectile():
 
 	
 func update_arrow_position(direction):
+	arrow_direction = direction
 	animated_arow.position.y = 0				
 	animated_arow.position.x = 0
 	if direction == 'right':
