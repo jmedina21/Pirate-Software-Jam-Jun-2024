@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var currentPosition = Vector2(-8, 120)
+@export var current_position = Vector2(-8, 120)
 
 @onready var sprite_2d = $Sprite2D
 @onready var animated_arow = $Sprite2D/AnimatedSprite2D
@@ -52,8 +52,8 @@ func _input(event):
 		print("Blocked by wall", collision_info.get_position())
 	else:
 		# Only update position if no collision occurred
-		currentPosition += move_offset
-		self.position = currentPosition
+		current_position += move_offset
+		self.position = current_position
 		
 
 func _process(delta):
@@ -64,7 +64,7 @@ func fire_projectile():
 	if attack_potion_count == 0 or attack_on_cooldown:
 		return
 	var potion_instance = potion.instantiate()
-	potion_instance.global_position = currentPosition
+	potion_instance.global_position = current_position
 	attack_on_cooldown = true
 	timer.start()
 	
