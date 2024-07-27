@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var patrol_interval = 0.75
 @onready var timer = $Timer
 @onready var sprite_2d = $Sprite2D
+@onready var death_zone = $DeathZone
 
 var moving_right = true
 var patrol_index = 0
@@ -31,4 +32,4 @@ func patrol():
 	else:
 		current_position += move_offset
 		self.position = current_position
-
+		

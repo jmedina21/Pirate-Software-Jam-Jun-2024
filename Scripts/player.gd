@@ -108,3 +108,5 @@ func update_arrow_position(direction):
 func _on_timer_timeout():
 	Engine.time_scale = 1
 	attack_on_cooldown = false
+
+
