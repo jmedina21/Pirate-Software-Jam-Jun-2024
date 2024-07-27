@@ -9,7 +9,7 @@ extends CharacterBody2D
 
 #var attack_ready = true
 var potion = preload("res://Scenes/damage_potion.tscn")
-var attack_potion_count = 5 
+var attack_potion_count = 500 
 var attack_on_cooldown = false
 var char_direction: String = 'right'
 var arrow_direction: String = 'right'
@@ -61,8 +61,8 @@ func _process(delta):
 		fire_projectile()
 
 func fire_projectile():
-	if attack_potion_count == 0 or attack_on_cooldown:
-		return
+	#if attack_potion_count == 0 or attack_on_cooldown:
+		#return
 	var potion_instance = potion.instantiate()
 	potion_instance.global_position = current_position
 	attack_on_cooldown = true

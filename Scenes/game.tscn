@@ -51,6 +51,7 @@ texture = ExtResource("1_5lm2e")
 8:0/0/terrain_set = 0
 8:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:0/0/physics_layer_0/angular_velocity = 0.0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(6.97456, -6.4346, 6.97456, 6.07462, 2.11487, 5.80464, 1.6649, -6.70458)
 9:0/0 = 0
 9:0/0/terrain_set = 0
 9:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -110,7 +111,7 @@ texture = ExtResource("1_5lm2e")
 7:1/0/terrain_set = 0
 7:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:1/0/physics_layer_0/angular_velocity = 0.0
-7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.23855, -6.93628, 6.88856, -6.87265, 7.01583, 7.12719, -7.30219, 6.99992)
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(6.97456, -6.4346, 6.97456, 6.07462, -5.89463, 5.71464, -6.16461, -6.4346)
 8:1/0 = 0
 8:1/0/terrain_set = 0
 8:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -464,6 +465,7 @@ texture = ExtResource("1_5lm2e")
 
 [sub_resource type="TileSet" id="TileSet_y86m8"]
 physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 54
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "floor"
 terrain_set_0/terrain_0/color = Color(0.548735, 0.19222, 0.649903, 1)
@@ -478,16 +480,22 @@ layer_0/tile_data = PackedInt32Array(-3, 196608, 2, -2, 131072, 2, 65534, 196608
 
 [node name="Player" parent="." instance=ExtResource("2_6rmbl")]
 position = Vector2(-8, 120)
+collision_layer = 0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(2, 2)
+zoom = Vector2(5, 5)
 
 [node name="Necromancer" parent="." instance=ExtResource("3_cpyn6")]
 position = Vector2(-120, 8)
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="Skelly" parent="." instance=ExtResource("4_1haec")]
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Skelly" parent="Enemies" instance=ExtResource("4_1haec")]
 position = Vector2(-40, -8)
+
+[node name="Skelly2" parent="Enemies" instance=ExtResource("4_1haec")]
+position = Vector2(87, 56)
 
 [connection signal="timeout" from="Timer" to="Player" method="_on_timer_timeout"]

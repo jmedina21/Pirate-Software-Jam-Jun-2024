@@ -11,8 +11,6 @@ var patrol_index = 0
 
 func _ready():
 	current_position = self.position
-	print(current_position)
-	add_child(timer)
 	timer.wait_time = patrol_interval
 	timer.start()
 
@@ -29,10 +27,8 @@ func patrol():
 	var collision_info = move_and_collide(move_offset)
 	
 	if collision_info:
-		print("Blocked by wall", collision_info.get_position())
-		# Change direction upon collision
 		moving_right = not moving_right
 	else:
-		# Only update position if no collision occurred
 		current_position += move_offset
 		self.position = current_position
+

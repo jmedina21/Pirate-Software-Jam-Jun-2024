@@ -13,18 +13,27 @@ func _ready():
 	
 func _process(delta):
 	position += direction * speed * delta
-	#position += (Vector2.RIGHT * speed).rotated(rotation) * delta
+	
 
 func _on_visible_on_screen_enabler_2d_screen_exited():
 	queue_free()
+
+
+func _on_body_entered(body):
+	if body.is_in_group(\"Enemies\"):
+		body.queue_free()
+	queue_free()
+	
+
+
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pctvg"]
 size = Vector2(6, 8)
 
 [node name="damage potion" type="Area2D"]
-collision_layer = 0
-collision_mask = 3
+collision_layer = 16
+collision_mask = 37
 script = SubResource("GDScript_hlnh4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -38,4 +47,6 @@ region_rect = Rect2(115, 147, 10, 11)
 position = Vector2(4.76837e-07, 0.5)
 scale = Vector2(0.2, 0.25)
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
