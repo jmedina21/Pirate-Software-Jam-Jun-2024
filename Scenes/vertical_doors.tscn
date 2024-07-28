@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7ojnactafjho"]
+
+[ext_resource type="Texture2D" uid="uid://chwkvbtdt8g2m" path="res://Assets/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="1_ket4n"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wy74k"]
+height = 56.0
+
+[node name="VerticalDoors" type="StaticBody2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+shape = SubResource("CapsuleShape2D_wy74k")
+
+[node name="Closed" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("1_ket4n")
+region_enabled = true
+region_rect = Rect2(154, 0, 6, 48)
+
+[node name="Opened" type="Sprite2D" parent="Area2D"]
+visible = false
+texture = ExtResource("1_ket4n")
+region_enabled = true
+region_rect = Rect2(184, 0, 24, 48)
