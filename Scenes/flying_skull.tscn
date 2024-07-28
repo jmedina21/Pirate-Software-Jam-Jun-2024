@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://xea8ftlsofur"]
+
+[ext_resource type="Script" path="res://Scripts/flying_skull.gd" id="1_jd75j"]
+[ext_resource type="Texture2D" uid="uid://dmpbl3uvsbeub" path="res://Assets/2D Pixel Dungeon Asset Pack/Character_animation/monsters_idle/skull/v2/skull_v2_1.png" id="1_lliac"]
+[ext_resource type="Texture2D" uid="uid://ceongy0t5p4qi" path="res://Assets/2D Pixel Dungeon Asset Pack/Character_animation/monsters_idle/skull/v2/skull_v2_2.png" id="2_slubg"]
+[ext_resource type="Texture2D" uid="uid://bijhh7hwh06kb" path="res://Assets/2D Pixel Dungeon Asset Pack/Character_animation/monsters_idle/skull/v2/skull_v2_3.png" id="3_of6bo"]
+[ext_resource type="Texture2D" uid="uid://c8v22rn8rww7i" path="res://Assets/2D Pixel Dungeon Asset Pack/Character_animation/monsters_idle/skull/v2/skull_v2_4.png" id="4_e6rg1"]
+[ext_resource type="PackedScene" uid="uid://cyjtc8h2wx0va" path="res://Scenes/kill_zone.tscn" id="5_x32mf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ya6hq"]
+size = Vector2(11, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u2o3j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lliac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_slubg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_of6bo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e6rg1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2nrmd"]
+size = Vector2(11, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ri6bs"]
+size = Vector2(222, 18)
+
+[node name="FlyingSkull" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 18
+script = ExtResource("1_jd75j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_ya6hq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_u2o3j")
+autoplay = "default"
+frame_progress = 0.256735
+
+[node name="KillZone" parent="." instance=ExtResource("5_x32mf")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_2nrmd")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+light_mask = 0
+shape = SubResource("RectangleShape2D_ri6bs")
+debug_color = Color(0.886595, 0.287851, 0.424849, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+light_mask = 0
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_ri6bs")
+debug_color = Color(0.778071, 0.389833, 0.535876, 0.42)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
