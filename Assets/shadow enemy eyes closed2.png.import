@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d378axyrtuc6a"
-path="res://.godot/imported/shadow enemy.png-77071b4cc1b8184b002770f1298c9d37.ctex"
+uid="uid://dmqw6lh1jhguc"
+path="res://.godot/imported/shadow enemy eyes closed2.png-c294900cf7d7af78bd4b34c86798bcfd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/shadow enemy.png"
-dest_files=["res://.godot/imported/shadow enemy.png-77071b4cc1b8184b002770f1298c9d37.ctex"]
+source_file="res://Assets/shadow enemy eyes closed2.png"
+dest_files=["res://.godot/imported/shadow enemy eyes closed2.png-c294900cf7d7af78bd4b34c86798bcfd.ctex"]
 
 [params]
 

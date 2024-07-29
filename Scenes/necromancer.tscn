@@ -1,16 +1,47 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2nsjiihjwir2"]
+[gd_scene load_steps=5 format=3 uid="uid://d2nsjiihjwir2"]
 
 [ext_resource type="Texture2D" uid="uid://dr3cg8wpyr4r0" path="res://Assets/shadow enemy.png" id="1_s5axl"]
+[ext_resource type="Texture2D" uid="uid://dmqw6lh1jhguc" path="res://Assets/shadow enemy eyes closed2.png" id="2_kh3hk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6adc"]
 size = Vector2(13, 14.875)
 
-[node name="Necromancer" type="Area2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_p3g23"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_s5axl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_s5axl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_s5axl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_s5axl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_s5axl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_s5axl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kh3hk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_s5axl")
-region_rect = Rect2(49, 16, 15, 15)
+[node name="Necromancer" type="Area2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5625)
 shape = SubResource("RectangleShape2D_o6adc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p3g23")
+autoplay = "default"
+frame_progress = 0.458319
