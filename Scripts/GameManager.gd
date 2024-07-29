@@ -1,9 +1,10 @@
 extends Node
 
 var key = preload("res://Scenes/key.tscn")
+var hatch = preload("res://Scenes/hatch.tscn")
 var enemy_death_positions = []
 var enemy_count = 0
-var inv_keys = 1
+var inv_keys = 0
 @export var inv_attack_potions = 7
 @onready var necromancer = $"../Necromancer"
 
@@ -22,23 +23,25 @@ func _on_enemy_died(position):
 	enemy_count -= 1
 	
 	if enemy_count == 0:
-		spawn_key(enemy_death_positions[-1])
+		spawn_item(key, enemy_death_positions[-1])
 
 # Call this function when spawning new enemies during gameplay
 func connect_to_new_enemy(enemy):
 	if not enemy.is_connected("enemy_died", _on_enemy_died):
 		enemy.connect("enemy_died", _on_enemy_died)
 
-func spawn_key(position):
-	var key_instance  = key.instantiate()
-	key_instance .global_position = position
-	key_instance.set_game_manager(self)
-	get_parent().add_child(key_instance)
+func spawn_item(item, position):
+	var item_instance  = item.instantiate()
+	item_instance .global_position = position
+	if item_instance.has_method('set_game_manager'):
+		item_instance.set_game_manager(self)
+	get_parent().add_child(item_instance)
 
 func pickup_loot(loot:String):
 	if loot == 'key':
 		inv_keys += 1
 	print(inv_keys)
 	
-func _on_boss_died():
-	print('boss is dead')
+func _on_boss_died(position):
+	print('boss is dead at ', position)
+	spawn_item(hatch, position)
