@@ -7,7 +7,6 @@ signal enemy_died(position)
 
 @onready var timer = $Timer
 @onready var sprite_2d = $Sprite2D
-@onready var death_zone = $DeathZone
 
 var moving_right = true
 var patrol_index = 0

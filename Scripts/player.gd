@@ -56,7 +56,7 @@ func _input(event):
 		self.position = current_position
 		
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed('action'):
 		fire_projectile()
 
@@ -108,5 +108,4 @@ func update_arrow_position(direction):
 func _on_timer_timeout():
 	Engine.time_scale = 1
 	attack_on_cooldown = false
-
 

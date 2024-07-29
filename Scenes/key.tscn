@@ -1,16 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://hqu21ae0nlbi"]
+[gd_scene load_steps=4 format=3 uid="uid://hqu21ae0nlbi"]
 
 [ext_resource type="Texture2D" uid="uid://chwkvbtdt8g2m" path="res://Assets/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="1_4qssp"]
+[ext_resource type="Script" path="res://Scripts/key.gd" id="1_pqjqx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jg4ta"]
 size = Vector2(11, 8)
 
 [node name="key" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_pqjqx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_4qssp")
 region_enabled = true
 region_rect = Rect2(131, 133, 11, 8)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_jg4ta")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

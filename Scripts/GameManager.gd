@@ -3,6 +3,8 @@ extends Node
 var key = preload("res://Scenes/key.tscn")
 var enemy_death_positions = []
 var enemy_count = 0
+var inv_keys = 0
+@export var inv_attack_potions = 7
 
 func _ready():
 	print("GameManager ready")
@@ -31,7 +33,13 @@ func connect_to_new_enemy(enemy):
 		print("Already connected to enemy at position: ", enemy.position)
 
 func spawn_key(position):
-	var static_object = key.instantiate()
-	static_object.global_position = position
-	get_parent().add_child(static_object)
+	var key_instance  = key.instantiate()
+	key_instance .global_position = position
+	key_instance.set_game_manager(self)
+	get_parent().add_child(key_instance)
 	print("Static object spawned at position:", position)
+
+func pickup_loot(loot:String):
+	if loot == 'key':
+		inv_keys += 1
+	print(inv_keys)

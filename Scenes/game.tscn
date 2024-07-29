@@ -482,6 +482,7 @@ sources/0 = SubResource("TileSetAtlasSource_ap7p6")
 [node name="Game" type="Node2D"]
 
 [node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("6_82rxr")
 
 [node name="TileMap" type="TileMap" parent="."]
