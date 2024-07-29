@@ -42,4 +42,5 @@ shape = SubResource("RectangleShape2D_wmtfq")
 shape = SubResource("RectangleShape2D_mv7mq")
 debug_color = Color(0.915146, 0.268016, 0.289156, 0.42)
 
+[connection signal="enemy_died" from="." to="." method="_on_enemy_died"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

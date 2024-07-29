@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1ti3ijw23ck0"]
+[gd_scene load_steps=9 format=3 uid="uid://b1ti3ijw23ck0"]
 
 [ext_resource type="Texture2D" uid="uid://chwkvbtdt8g2m" path="res://Assets/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="1_5lm2e"]
 [ext_resource type="PackedScene" uid="uid://b1jdtp8uvd14j" path="res://Scenes/player.tscn" id="2_6rmbl"]
 [ext_resource type="PackedScene" uid="uid://d2nsjiihjwir2" path="res://Scenes/necromancer.tscn" id="3_cpyn6"]
 [ext_resource type="PackedScene" uid="uid://m4pv74wn7lav" path="res://Scenes/skelly.tscn" id="4_1haec"]
 [ext_resource type="PackedScene" uid="uid://b7ojnactafjho" path="res://Scenes/vertical_doors.tscn" id="5_4ywrj"]
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="6_82rxr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ap7p6"]
 texture = ExtResource("1_5lm2e")
@@ -480,6 +481,9 @@ sources/0 = SubResource("TileSetAtlasSource_ap7p6")
 
 [node name="Game" type="Node2D"]
 
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("6_82rxr")
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_y86m8")
 format = 2
@@ -509,3 +513,4 @@ position = Vector2(56, 56)
 position = Vector2(-87, 8)
 
 [connection signal="timeout" from="Timer" to="Player" method="_on_timer_timeout"]
+[connection signal="enemy_died" from="Enemies/Skelly" to="Player" method="_on_skelly_enemy_died"]
