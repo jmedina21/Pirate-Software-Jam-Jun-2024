@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2nsjiihjwir2"]
+[gd_scene load_steps=8 format=3 uid="uid://d2nsjiihjwir2"]
 
+[ext_resource type="Script" path="res://Scripts/necromancer.gd" id="1_ro6dv"]
 [ext_resource type="Texture2D" uid="uid://dr3cg8wpyr4r0" path="res://Assets/shadow enemy.png" id="1_s5axl"]
 [ext_resource type="Texture2D" uid="uid://dmqw6lh1jhguc" path="res://Assets/shadow enemy eyes closed2.png" id="2_kh3hk"]
+[ext_resource type="PackedScene" uid="uid://cyjtc8h2wx0va" path="res://Scenes/kill_zone.tscn" id="3_clvfj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6adc"]
 size = Vector2(13, 14.875)
@@ -35,7 +37,13 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmjk4"]
+size = Vector2(15, 15)
+
 [node name="Necromancer" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_ro6dv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5625)
@@ -45,3 +53,9 @@ shape = SubResource("RectangleShape2D_o6adc")
 sprite_frames = SubResource("SpriteFrames_p3g23")
 autoplay = "default"
 frame_progress = 0.458319
+
+[node name="KillZone" parent="." instance=ExtResource("3_clvfj")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+shape = SubResource("RectangleShape2D_qmjk4")
+debug_color = Color(0.915146, 0.268016, 0.289156, 0.42)
