@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://xea8ftlsofur"]
+[gd_scene load_steps=10 format=3 uid="uid://xea8ftlsofur"]
 
 [ext_resource type="Script" path="res://Scripts/flying_skull.gd" id="1_jd75j"]
 [ext_resource type="Texture2D" uid="uid://dmpbl3uvsbeub" path="res://Assets/2D Pixel Dungeon Asset Pack/Character_animation/monsters_idle/skull/v2/skull_v2_1.png" id="1_lliac"]
@@ -33,9 +33,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2nrmd"]
 size = Vector2(11, 12)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ri6bs"]
-size = Vector2(222, 18)
-
 [node name="FlyingSkull" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 18
@@ -55,20 +52,49 @@ frame_progress = 0.256735
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_2nrmd")
+debug_color = Color(0.93762, 0.195956, 0.400476, 0.42)
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 0
+[node name="sprite_timer" type="Timer" parent="."]
+
+[node name="attack_timer" type="Timer" parent="."]
+
+[node name="RayCast top-right" type="RayCast2D" parent="."]
+target_position = Vector2(120, -10)
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-light_mask = 0
-shape = SubResource("RectangleShape2D_ri6bs")
-debug_color = Color(0.886595, 0.287851, 0.424849, 0.42)
+[node name="RayCast bot-right" type="RayCast2D" parent="."]
+target_position = Vector2(120, 10)
+collision_mask = 2
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-light_mask = 0
-rotation = 1.5708
-shape = SubResource("RectangleShape2D_ri6bs")
-debug_color = Color(0.778071, 0.389833, 0.535876, 0.42)
+[node name="RayCast bot-left" type="RayCast2D" parent="."]
+rotation = 3.14159
+target_position = Vector2(120, -10)
+collision_mask = 2
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="RayCast top-left" type="RayCast2D" parent="."]
+rotation = 3.14159
+target_position = Vector2(120, 10)
+collision_mask = 2
+
+[node name="RayCast up-right" type="RayCast2D" parent="."]
+rotation = 3.14159
+target_position = Vector2(-8, 120)
+collision_mask = 2
+
+[node name="RayCast up-left" type="RayCast2D" parent="."]
+rotation = 3.14159
+target_position = Vector2(8, 120)
+collision_mask = 2
+
+[node name="RayCast down-left" type="RayCast2D" parent="."]
+rotation = 3.13982
+target_position = Vector2(8, -120)
+collision_mask = 2
+
+[node name="RayCast down-right" type="RayCast2D" parent="."]
+rotation = 3.13982
+target_position = Vector2(-8, -120)
+collision_mask = 2
+
+[connection signal="timeout" from="sprite_timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]

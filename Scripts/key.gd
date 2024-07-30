@@ -6,7 +6,7 @@ var game_manager
 func set_game_manager(manager):
 	game_manager = manager
 
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(_body):
 	if game_manager:
 		game_manager.pickup_loot('key')
 	else:

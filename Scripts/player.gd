@@ -4,8 +4,7 @@ extends CharacterBody2D
 
 @onready var sprite_2d = $Sprite2D
 @onready var animated_arow = $Sprite2D/AnimatedSprite2D
-@onready var marker_2d = $Marker2D
-@onready var timer = $"../Timer"
+@onready var timer = $Timer
 
 #var attack_ready = true
 var potion = preload("res://Scenes/damage_potion.tscn")
@@ -16,7 +15,6 @@ var arrow_direction: String = 'right'
 
 func _ready():
 	current_position = self.position
-
 
 func _input(event):
 	var move_offset = Vector2.ZERO
@@ -67,7 +65,7 @@ func fire_projectile():
 	#if attack_potion_count == 0 or attack_on_cooldown:
 		#return
 	var potion_instance = potion.instantiate()
-	potion_instance.global_position = current_position
+	potion_instance.global_position = global_position
 	attack_on_cooldown = true
 	timer.start()
 	

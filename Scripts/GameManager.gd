@@ -10,9 +10,9 @@ var inv_keys = 0
 
 func _ready():
 	var enemies = get_tree().get_nodes_in_group("Enemies")
-	var tst = get_tree()
 	
 	enemy_count = enemies.size()
+	print(enemy_count)
 	for enemy in enemies:
 		connect_to_new_enemy(enemy)
 		

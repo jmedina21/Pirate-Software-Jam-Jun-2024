@@ -54,4 +54,4 @@ frame_progress = 0.994623
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_yl2j4")
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="Timer" type="Timer" parent="."]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cskagu4fpprb2"]
+
+[ext_resource type="Texture2D" uid="uid://oj4bigvt328i" path="res://Assets/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Character_2.png" id="1_2ixux"]
+[ext_resource type="Script" path="res://Scripts/skull_proyectile.gd" id="1_r8n3l"]
+[ext_resource type="PackedScene" uid="uid://cyjtc8h2wx0va" path="res://Scenes/kill_zone.tscn" id="3_jly4c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8y4d"]
+size = Vector2(9, 11)
+
+[node name="Skull Proyectile" type="Area2D"]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_r8n3l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2ixux")
+region_enabled = true
+region_rect = Rect2(3, 18, 9, 11)
+
+[node name="KillZone" parent="." instance=ExtResource("3_jly4c")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+shape = SubResource("RectangleShape2D_f8y4d")

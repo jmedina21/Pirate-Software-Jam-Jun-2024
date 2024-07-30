@@ -482,7 +482,6 @@ sources/0 = SubResource("TileSetAtlasSource_ap7p6")
 [node name="Level 1" type="Node2D"]
 
 [node name="GameManager" type="Node" parent="."]
-unique_name_in_owner = true
 script = ExtResource("6_82rxr")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -500,8 +499,6 @@ zoom = Vector2(5, 5)
 [node name="Necromancer" parent="." instance=ExtResource("3_cpyn6")]
 position = Vector2(-120, 8)
 
-[node name="Timer" type="Timer" parent="."]
-
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Skelly" parent="Enemies" instance=ExtResource("4_1haec")]
@@ -513,5 +510,4 @@ position = Vector2(56, 56)
 [node name="VerticalDoors" parent="." instance=ExtResource("5_4ywrj")]
 position = Vector2(-87, 8)
 
-[connection signal="timeout" from="Timer" to="Player" method="_on_timer_timeout"]
 [connection signal="enemy_died" from="Enemies/Skelly" to="Player" method="_on_skelly_enemy_died"]
