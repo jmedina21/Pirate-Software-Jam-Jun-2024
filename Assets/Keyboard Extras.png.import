@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wxr45c6xyy8w"
-path="res://.godot/imported/throwing knife.png-ebea9d335e32e8076c449b31e02f326a.ctex"
+uid="uid://d4d5xfy02tle2"
+path="res://.godot/imported/Keyboard Extras.png-9ebfd42007f017e71f33a33362dd0ec1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/throwing knife.png"
-dest_files=["res://.godot/imported/throwing knife.png-ebea9d335e32e8076c449b31e02f326a.ctex"]
+source_file="res://Assets/Keyboard Extras.png"
+dest_files=["res://.godot/imported/Keyboard Extras.png-9ebfd42007f017e71f33a33362dd0ec1.ctex"]
 
 [params]
 
