@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var current_position = Vector2(-8, 120)
+@export var current_position: Vector2
 
 @onready var sprite_2d = $Sprite2D
 @onready var animated_arow = $Sprite2D/AnimatedSprite2D
@@ -13,6 +13,9 @@ var attack_potion_count = 500
 var attack_on_cooldown = false
 var char_direction: String = 'right'
 var arrow_direction: String = 'right'
+
+func _ready():
+	current_position = self.position
 
 
 func _input(event):
