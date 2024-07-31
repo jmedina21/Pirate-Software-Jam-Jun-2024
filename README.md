@@ -9,7 +9,7 @@
 - Kill all enemies to get to the Necromancer and move to the next level.
 
 ## Development Team
-- **Lead Developer:** [Pablo Medina]
+- **Lead Developer:** [Pablo Medina](https://github.com/jmedina21)
 - **Art and Design:** [Pixel Poem](https://pixel-poem.itch.io/)
 
 Enjoy the game!
