@@ -47,13 +47,9 @@ func _input(event):
 			return
 		move_offset.y += 16
 
-	# Attempt to move the player, and handle collision detection
 	var collision_info = move_and_collide(move_offset)
 	
-	if collision_info:
-		print("Blocked by wall", collision_info.get_position())
-	else:
-		# Only update position if no collision occurred
+	if !collision_info:
 		current_position += move_offset
 		self.position = current_position
 		
@@ -63,7 +59,6 @@ func _process(_delta):
 		fire_projectile()
 
 func fire_projectile():
-	print(attack_on_cooldown)
 	if attack_potion_count == 0 or attack_on_cooldown:
 		return
 	var potion_instance = potion.instantiate()
@@ -110,7 +105,6 @@ func update_arrow_position(direction):
 		
 
 func _on_timer_timeout():
-	print('timer')
 	Engine.time_scale = 1
 	attack_on_cooldown = false
 
