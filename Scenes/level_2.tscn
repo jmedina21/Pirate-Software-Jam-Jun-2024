@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cnsvgd1l4lwx2" path="res://Scenes/skelly_vert.tscn" id="6_2qtrb"]
 [ext_resource type="PackedScene" uid="uid://xea8ftlsofur" path="res://Scenes/flying_skull.tscn" id="7_e3a4x"]
 [ext_resource type="PackedScene" uid="uid://b0ameeoim0f41" path="res://Scenes/hatch.tscn" id="9_8kqmo"]
-[ext_resource type="PackedScene" uid="uid://y8waomvvi01t" path="res://Scenes/menu.tscn" id="10_hlbtf"]
+[ext_resource type="PackedScene" uid="uid://bwr2isnay6srp" path="res://Scenes/level_3.tscn" id="11_ks4ph"]
 
 [node name="Level 2" type="Node2D"]
 position = Vector2(-144, -160)
@@ -56,4 +56,4 @@ position = Vector2(304, 512)
 
 [node name="hatch" parent="." instance=ExtResource("9_8kqmo")]
 position = Vector2(184, 552)
-target_scene = ExtResource("10_hlbtf")
+target_scene = ExtResource("11_ks4ph")
