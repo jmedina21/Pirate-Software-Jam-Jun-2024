@@ -4,7 +4,6 @@ var key = preload("res://Scenes/key.tscn")
 var enemy_death_positions = []
 var enemy_count = 0
 var inv_keys = 0
-@export var inv_attack_potions = 7
 @onready var necromancer = $"../Necromancer"
 @onready var hatch = $"../hatch"
 @onready var ui = $"../UI"

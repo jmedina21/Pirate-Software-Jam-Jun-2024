@@ -537,7 +537,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="hatch3" parent="." instance=ExtResource("2_qlkti")]
-visible = false
 position = Vector2(56, -133)
 
 [node name="3" type="Label" parent="hatch3"]
@@ -560,6 +559,7 @@ vertical_alignment = 1
 
 [node name="Player" parent="." instance=ExtResource("3_vvn1c")]
 position = Vector2(0, 40)
+attack_potion_count = 100
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(5, 5)

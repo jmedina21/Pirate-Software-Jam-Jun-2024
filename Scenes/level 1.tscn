@@ -26,6 +26,7 @@ script = ExtResource("6_82rxr")
 
 [node name="Player" parent="." instance=ExtResource("2_6rmbl")]
 position = Vector2(-8, 120)
+attack_potion_count = 5
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(5, 5)

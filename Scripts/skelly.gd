@@ -8,7 +8,7 @@ signal enemy_died(position)
 @onready var timer = $Timer
 @onready var sprite_2d = $Sprite2D
 
-var moving_right = true
+@export var moving_right = true
 var patrol_index = 0
 
 func _ready():

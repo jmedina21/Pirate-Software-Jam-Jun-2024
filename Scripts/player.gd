@@ -9,13 +9,14 @@ extends CharacterBody2D
 
 #var attack_ready = true
 var potion = preload("res://Scenes/damage_potion.tscn")
-var attack_potion_count = 10
+@export var attack_potion_count: int
 var attack_on_cooldown = false
 var char_direction: String = 'right'
 var arrow_direction: String = 'right'
 
 func _ready():
 	current_position = self.position
+	ui.potion_amount.text = str(attack_potion_count)
 
 func _input(event):
 	var move_offset = Vector2.ZERO
