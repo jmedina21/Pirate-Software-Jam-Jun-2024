@@ -4,11 +4,12 @@ extends CharacterBody2D
 
 @onready var sprite_2d = $Sprite2D
 @onready var animated_arow = $Sprite2D/AnimatedSprite2D
+@onready var ui = $"../UI"
 @onready var timer = $Timer
 
 #var attack_ready = true
 var potion = preload("res://Scenes/damage_potion.tscn")
-var attack_potion_count = 500 
+var attack_potion_count = 10
 var attack_on_cooldown = false
 var char_direction: String = 'right'
 var arrow_direction: String = 'right'
@@ -62,8 +63,9 @@ func _process(_delta):
 		fire_projectile()
 
 func fire_projectile():
-	#if attack_potion_count == 0 or attack_on_cooldown:
-		#return
+	print(attack_on_cooldown)
+	if attack_potion_count == 0 or attack_on_cooldown:
+		return
 	var potion_instance = potion.instantiate()
 	potion_instance.global_position = global_position
 	attack_on_cooldown = true
@@ -86,6 +88,7 @@ func fire_projectile():
 
 	add_child(potion_instance)
 	attack_potion_count -= 1
+	ui.potion_amount.text = str(attack_potion_count)
 
 	
 func update_arrow_position(direction):
@@ -107,6 +110,7 @@ func update_arrow_position(direction):
 		
 
 func _on_timer_timeout():
+	print('timer')
 	Engine.time_scale = 1
 	attack_on_cooldown = false
 

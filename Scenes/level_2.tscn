@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://daf2ire6i74ww"]
+[gd_scene load_steps=12 format=3 uid="uid://daf2ire6i74ww"]
 
+[ext_resource type="PackedScene" uid="uid://cibviepf0dui6" path="res://Scenes/ui.tscn" id="1_2hb6x"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_8ih4d"]
 [ext_resource type="PackedScene" uid="uid://b1jdtp8uvd14j" path="res://Scenes/player.tscn" id="2_2c3hl"]
 [ext_resource type="TileSet" uid="uid://bbhru5olfdv1g" path="res://tileset/level 1.tres" id="2_xpa8q"]
@@ -13,6 +14,8 @@
 
 [node name="Level 2" type="Node2D"]
 position = Vector2(-144, -160)
+
+[node name="UI" parent="." instance=ExtResource("1_2hb6x")]
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true

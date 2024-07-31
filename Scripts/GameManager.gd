@@ -7,13 +7,16 @@ var inv_keys = 0
 @export var inv_attack_potions = 7
 @onready var necromancer = $"../Necromancer"
 @onready var hatch = $"../hatch"
+@onready var ui = $"../UI"
 
 func _ready():
 	hatch.visible = false
+	
 	var enemies = get_tree().get_nodes_in_group("Enemies")
 	
 	enemy_count = enemies.size()
-	print(enemy_count)
+	
+	
 	for enemy in enemies:
 		connect_to_new_enemy(enemy)
 		
@@ -41,6 +44,7 @@ func spawn_item(item, position):
 func pickup_loot(loot:String):
 	if loot == 'key':
 		inv_keys += 1
+		ui.key_amount.text = str(inv_keys)
 	print(inv_keys)
 	
 func _on_boss_died(position):
