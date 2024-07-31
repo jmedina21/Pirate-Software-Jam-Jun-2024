@@ -5,7 +5,8 @@ extends Area2D
 @onready var color_rect = $CanvasLayer/ColorRect
 
 func _ready():
-	color_rect.visible = false
+	#color_rect.visible = false
+	animation_player.play("fade_in")
 
 func _on_body_entered(body):
 	if body.name == "Player":
@@ -14,9 +15,7 @@ func _on_body_entered(body):
 		body.is_dead = true
 		print('player dies')
 
-#func _on_audio_stream_player_2d_finished():
-		#get_tree().reload_current_scene()
-
-
 func _on_animation_player_animation_finished(anim_name):
+	if anim_name == 'fade_in':
+		return
 	get_tree().reload_current_scene()
