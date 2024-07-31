@@ -8,6 +8,8 @@ extends CharacterBody2D
 @onready var timer = $Timer
 @onready var movement_sound = $movement_sound
 @onready var attack_sound = $attack_sound
+@onready var color_rect = $CanvasLayer/ColorRect
+@onready var animation_player = $AnimationPlayer
 
 var potion = preload("res://Scenes/damage_potion.tscn")
 @export var attack_potion_count: int
@@ -21,6 +23,7 @@ var is_dead = false
 func _ready():
 	current_position = self.position
 	ui.potion_amount.text = str(attack_potion_count)
+	color_rect.visible = false
 
 func _input(event):
 	if is_dead:
@@ -119,3 +122,9 @@ func update_arrow_position(direction):
 func _on_timer_timeout():
 	attack_on_cooldown = false
 
+func die():
+	if not is_dead:
+		animation_player.play("fade_out")
+		is_dead = true
+		await get_tree().create_timer(1.0).timeout
+		get_tree().reload_current_scene()
