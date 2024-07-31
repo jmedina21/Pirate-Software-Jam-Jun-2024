@@ -1,7 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://y8waomvvi01t"]
 
 [ext_resource type="Texture2D" uid="uid://chwkvbtdt8g2m" path="res://Assets/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="1_g88n7"]
-[ext_resource type="PackedScene" uid="uid://cibviepf0dui6" path="res://Scenes/ui.tscn" id="1_yurdn"]
 [ext_resource type="PackedScene" uid="uid://b0ameeoim0f41" path="res://Scenes/hatch.tscn" id="2_qlkti"]
 [ext_resource type="PackedScene" uid="uid://b1ti3ijw23ck0" path="res://Scenes/level 1.tscn" id="3_vg4bt"]
 [ext_resource type="PackedScene" uid="uid://b1jdtp8uvd14j" path="res://Scenes/player.tscn" id="3_vvn1c"]
@@ -9,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://daf2ire6i74ww" path="res://Scenes/level_2.tscn" id="4_qvxcp"]
 [ext_resource type="Texture2D" uid="uid://4mvelbv7yxne" path="res://Assets/Keyboard Letters and Symbols.png" id="5_du3w1"]
 [ext_resource type="Texture2D" uid="uid://d4d5xfy02tle2" path="res://Assets/Keyboard Extras.png" id="6_qfb60"]
+[ext_resource type="PackedScene" uid="uid://cibviepf0dui6" path="res://Scenes/ui.tscn" id="10_216vk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ap7p6"]
 texture = ExtResource("1_g88n7")
@@ -484,7 +484,7 @@ sources/0 = SubResource("TileSetAtlasSource_ap7p6")
 
 [node name="Menu" type="Node2D"]
 
-[node name="UI" parent="." instance=ExtResource("1_yurdn")]
+[node name="UI" parent="." instance=ExtResource("10_216vk")]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_bvokg")
