@@ -1,14 +1,15 @@
 extends Node
 
 var key = preload("res://Scenes/key.tscn")
-var hatch = preload("res://Scenes/hatch.tscn")
 var enemy_death_positions = []
 var enemy_count = 0
 var inv_keys = 0
 @export var inv_attack_potions = 7
 @onready var necromancer = $"../Necromancer"
+@onready var hatch = $"../hatch"
 
 func _ready():
+	hatch.visible = false
 	var enemies = get_tree().get_nodes_in_group("Enemies")
 	
 	enemy_count = enemies.size()
@@ -21,7 +22,7 @@ func _ready():
 func _on_enemy_died(position):
 	enemy_death_positions.append(position)
 	enemy_count -= 1
-	
+	print(enemy_death_positions)
 	if enemy_count == 0:
 		spawn_item(key, enemy_death_positions[-1])
 
@@ -32,7 +33,7 @@ func connect_to_new_enemy(enemy):
 
 func spawn_item(item, position):
 	var item_instance  = item.instantiate()
-	item_instance .global_position = position
+	item_instance.global_position = position
 	if item_instance.has_method('set_game_manager'):
 		item_instance.set_game_manager(self)
 	get_parent().add_child(item_instance)
@@ -44,4 +45,4 @@ func pickup_loot(loot:String):
 	
 func _on_boss_died(position):
 	print('boss is dead at ', position)
-	spawn_item(hatch, position)
+	hatch.visible = true

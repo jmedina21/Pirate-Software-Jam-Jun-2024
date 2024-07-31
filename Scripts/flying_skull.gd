@@ -69,11 +69,10 @@ func fire_projectile(direction):
 	skull_instance.direction = direction
 
 	add_child(skull_instance)
-	#attack_potion_count -= 1
 
 func _on_attack_timer_timeout():
 	is_attack_on_cooldown = !is_attack_on_cooldown
 
 func on_death():
-	emit_signal("enemy_died", global_position)
+	emit_signal("enemy_died", self.position)
 	queue_free()
