@@ -35,7 +35,6 @@ region_enabled = true
 region_rect = Rect2(184, 0, 24, 48)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 shape = SubResource("CapsuleShape2D_34ki8")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

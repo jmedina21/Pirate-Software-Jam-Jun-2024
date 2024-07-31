@@ -5,8 +5,8 @@ extends StaticBody2D
 @onready var opened = $Area2D/Opened
 @onready var doors_collision = $doors_collision
 
-
 func _on_area_2d_body_entered(body):
+	print(body.name)
 	if body.name == "Player" and  game_manager.inv_keys > 0:
 		closed.visible = false
 		opened.visible = true
