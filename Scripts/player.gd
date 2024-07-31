@@ -6,19 +6,25 @@ extends CharacterBody2D
 @onready var animated_arow = $Sprite2D/AnimatedSprite2D
 @onready var ui = $"../UI"
 @onready var timer = $Timer
+@onready var movement_sound = $movement_sound
+@onready var attack_sound = $attack_sound
 
-#var attack_ready = true
 var potion = preload("res://Scenes/damage_potion.tscn")
 @export var attack_potion_count: int
+@export var attack_cd_time: float = 0.6
 var attack_on_cooldown = false
 var char_direction: String = 'right'
 var arrow_direction: String = 'right'
+
+var is_dead = false
 
 func _ready():
 	current_position = self.position
 	ui.potion_amount.text = str(attack_potion_count)
 
 func _input(event):
+	if is_dead:
+		return
 	var move_offset = Vector2.ZERO
 	
 	if event.is_action_pressed("left"):
@@ -28,6 +34,7 @@ func _input(event):
 			return
 		move_offset.x -= 16
 		sprite_2d.flip_h = true
+		movement_sound.play()	
 	elif event.is_action_pressed("right"):
 		if arrow_direction != 'right':
 			update_arrow_position('right')
@@ -35,19 +42,21 @@ func _input(event):
 			return
 		move_offset.x += 16
 		sprite_2d.flip_h = false
+		movement_sound.play()
 	elif event.is_action_pressed("up"):
 		if arrow_direction != 'up':
 			update_arrow_position('up')
 			char_direction = 'up'
 			return
 		move_offset.y -= 16
+		movement_sound.play()
 	elif event.is_action_pressed("down"):
 		if arrow_direction != 'down':
 			update_arrow_position('down')
 			char_direction = 'down'
 			return
 		move_offset.y += 16
-
+		movement_sound.play()
 	var collision_info = move_and_collide(move_offset)
 	
 	if !collision_info:
@@ -65,6 +74,7 @@ func fire_projectile():
 	var potion_instance = potion.instantiate()
 	potion_instance.global_position = global_position
 	attack_on_cooldown = true
+	timer.wait_time = attack_cd_time
 	timer.start()
 	
 	# Set the projectile's direction vector based on the arrow's rotation
@@ -83,6 +93,7 @@ func fire_projectile():
 	potion_instance.direction = direction
 
 	add_child(potion_instance)
+	attack_sound.play()
 	attack_potion_count -= 1
 	ui.potion_amount.text = str(attack_potion_count)
 
@@ -106,6 +117,5 @@ func update_arrow_position(direction):
 		
 
 func _on_timer_timeout():
-	Engine.time_scale = 1
 	attack_on_cooldown = false
 

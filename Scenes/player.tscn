@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b1jdtp8uvd14j"]
+[gd_scene load_steps=12 format=3 uid="uid://b1jdtp8uvd14j"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_hu6pk"]
 [ext_resource type="Texture2D" uid="uid://oj4bigvt328i" path="res://Assets/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Character_2.png" id="1_rps43"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://b2xmnlhhnyyik" path="res://Assets/2D Pixel Dungeon Asset Pack/interface/arrow_2.png" id="4_v7w7v"]
 [ext_resource type="Texture2D" uid="uid://d0gkowh4fn1kc" path="res://Assets/2D Pixel Dungeon Asset Pack/interface/arrow_4.png" id="5_ryypg"]
 [ext_resource type="Texture2D" uid="uid://c8btxlwf0fatn" path="res://Assets/2D Pixel Dungeon Asset Pack/interface/arrow_3.png" id="6_tsts2"]
+[ext_resource type="AudioStream" uid="uid://dbd8m207eyn7x" path="res://Assets/Audio/12_human_jump_3.wav" id="7_u503q"]
+[ext_resource type="AudioStream" uid="uid://b1somp47b76ua" path="res://Assets/Audio/08_Step_rock_02.wav" id="8_214yn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4kbfq"]
 atlas = ExtResource("3_f06nl")
@@ -55,5 +57,11 @@ frame_progress = 0.994623
 shape = SubResource("RectangleShape2D_yl2j4")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="attack_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_u503q")
+
+[node name="movement_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_214yn")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

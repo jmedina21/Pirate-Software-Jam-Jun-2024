@@ -24,7 +24,6 @@ func _ready():
 func _on_enemy_died(position):
 	enemy_death_positions.append(position)
 	enemy_count -= 1
-	print(enemy_death_positions)
 	if enemy_count == 0:
 		spawn_item(key, enemy_death_positions[-1])
 
@@ -44,8 +43,6 @@ func pickup_loot(loot:String):
 	if loot == 'key':
 		inv_keys += 1
 		ui.key_amount.text = str(inv_keys)
-	print(inv_keys)
 	
 func _on_boss_died(position):
-	print('boss is dead at ', position)
 	hatch.visible = true

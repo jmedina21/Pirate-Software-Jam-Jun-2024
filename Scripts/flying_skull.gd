@@ -15,7 +15,6 @@ signal enemy_died(position)
 @onready var attack_timer = $attack_timer
 
 var skull_proyectile = preload("res://Scenes/skull_proyectile.tscn")
-
 var is_attack_on_cooldown: bool = false
 var flip_wait_time = 2
 var attack_cooldown = 1

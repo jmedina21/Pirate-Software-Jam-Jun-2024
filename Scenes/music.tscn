@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c40tuxd33nkvk"]
+
+[ext_resource type="AudioStream" uid="uid://djac73bxmpfk" path="res://Assets/Audio/Goblins_Den_(Regular).mp3" id="1_6ayvl"]
+
+[node name="Music" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_6ayvl")
+autoplay = true

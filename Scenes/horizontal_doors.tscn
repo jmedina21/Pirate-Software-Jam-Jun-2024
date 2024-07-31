@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://clg0srcro75dh"]
+[gd_scene load_steps=6 format=3 uid="uid://clg0srcro75dh"]
 
 [ext_resource type="Script" path="res://Scripts/vertical_doors.gd" id="1_7cji1"]
 [ext_resource type="Texture2D" uid="uid://chwkvbtdt8g2m" path="res://Assets/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="1_yiae0"]
+[ext_resource type="AudioStream" uid="uid://4shrsjkjhtnl" path="res://Assets/Audio/05_door_open_1.mp3" id="3_0kno8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uepxv"]
 size = Vector2(32, 16.5)
@@ -34,5 +35,8 @@ region_rect = Rect2(176, 63, 32, 17)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CapsuleShape2D_3602l")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_0kno8")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

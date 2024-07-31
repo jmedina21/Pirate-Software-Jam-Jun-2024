@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdgttr50gn3j4"]
+[gd_scene load_steps=8 format=3 uid="uid://cdgttr50gn3j4"]
 
 [ext_resource type="Texture2D" uid="uid://b4bmfvurkx0ef" path="res://Assets/green potion.png" id="1_5qvn4"]
+[ext_resource type="AudioStream" uid="uid://1hd5rbhdkon5" path="res://Assets/Audio/03_Claw_03.wav" id="2_hb1a8"]
 
 [sub_resource type="GDScript" id="GDScript_hlnh4"]
 script/source = "extends Area2D
 
 var speed = 100
 var direction = Vector2()
+@onready var animation_player = $AnimationPlayer
 
 func _ready():
 	set_as_top_level(true)
@@ -17,16 +19,120 @@ func _process(delta):
 func _on_body_entered(body):
 	if body.is_in_group(\"Enemies\"):
 		body.on_death()
-	queue_free()
+		animation_player.play(\"kill sound\")
+	else:
+		queue_free()
 	
 
 func _on_area_entered(area):
 	if area.get_collision_layer_value(3) and area.has_method('on_death'):
 		area.on_death()
+		animation_player.play(\"kill sound\")
+	else:
+		queue_free()
+		
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pctvg"]
 size = Vector2(6, 8)
+
+[sub_resource type="Animation" id="Animation_yfhrd"]
+resource_name = "kill sound"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_lnmqg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t8alv"]
+_data = {
+"RESET": SubResource("Animation_lnmqg"),
+"kill sound": SubResource("Animation_yfhrd")
+}
 
 [node name="damage potion" type="Area2D"]
 collision_layer = 16
@@ -39,6 +145,14 @@ shape = SubResource("RectangleShape2D_pctvg")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_5qvn4")
 region_rect = Rect2(115, 147, 10, 11)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_hb1a8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t8alv")
+}
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
