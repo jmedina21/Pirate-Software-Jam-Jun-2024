@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bwr2isnay6srp"]
+[gd_scene load_steps=13 format=3 uid="uid://bwr2isnay6srp"]
 
 [ext_resource type="TileSet" uid="uid://bbhru5olfdv1g" path="res://tileset/level 1.tres" id="1_5r1q1"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_i708a"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cibviepf0dui6" path="res://Scenes/ui.tscn" id="2_mjnei"]
 [ext_resource type="PackedScene" uid="uid://m4pv74wn7lav" path="res://Scenes/skelly.tscn" id="3_66l17"]
 [ext_resource type="PackedScene" uid="uid://xea8ftlsofur" path="res://Scenes/flying_skull.tscn" id="6_cf41v"]
-[ext_resource type="PackedScene" uid="uid://y8waomvvi01t" path="res://Scenes/menu.tscn" id="6_j12yt"]
 [ext_resource type="PackedScene" uid="uid://cnsvgd1l4lwx2" path="res://Scenes/skelly_vert.tscn" id="7_anqof"]
 [ext_resource type="PackedScene" uid="uid://d2nsjiihjwir2" path="res://Scenes/necromancer.tscn" id="8_l64uo"]
 [ext_resource type="PackedScene" uid="uid://b0ameeoim0f41" path="res://Scenes/hatch.tscn" id="9_loqnh"]
@@ -38,7 +37,7 @@ zoom = Vector2(5, 5)
 
 [node name="hatch" parent="." instance=ExtResource("9_loqnh")]
 position = Vector2(208, -40)
-target_scene = ExtResource("6_j12yt")
+target_scene = "res://Scenes/menu.tscn"
 
 [node name="Skelly" parent="." instance=ExtResource("3_66l17")]
 position = Vector2(40, 96)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://daf2ire6i74ww"]
+[gd_scene load_steps=13 format=3 uid="uid://daf2ire6i74ww"]
 
 [ext_resource type="PackedScene" uid="uid://cibviepf0dui6" path="res://Scenes/ui.tscn" id="1_2hb6x"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_8ih4d"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://cnsvgd1l4lwx2" path="res://Scenes/skelly_vert.tscn" id="6_2qtrb"]
 [ext_resource type="PackedScene" uid="uid://xea8ftlsofur" path="res://Scenes/flying_skull.tscn" id="7_e3a4x"]
 [ext_resource type="PackedScene" uid="uid://b0ameeoim0f41" path="res://Scenes/hatch.tscn" id="9_8kqmo"]
-[ext_resource type="PackedScene" uid="uid://bwr2isnay6srp" path="res://Scenes/level_3.tscn" id="11_ks4ph"]
 [ext_resource type="PackedScene" uid="uid://b582up7vy0rj3" path="res://Scenes/ligths/front_torch.tscn" id="12_piali"]
 [ext_resource type="PackedScene" uid="uid://dlxqqa47bl6ms" path="res://Scenes/ligths/side_torch.tscn" id="13_c4yly"]
 
@@ -38,6 +37,10 @@ attack_potion_count = 10
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(5, 5)
 
+[node name="hatch" parent="." instance=ExtResource("9_8kqmo")]
+position = Vector2(184, 552)
+target_scene = "res://Scenes/level_3.tscn"
+
 [node name="Necromancer" parent="." instance=ExtResource("3_f1e0p")]
 position = Vector2(184, 552)
 
@@ -59,14 +62,11 @@ position = Vector2(432, 416)
 [node name="FlyingSkull" parent="." groups=["Enemies"] instance=ExtResource("7_e3a4x")]
 position = Vector2(304, 512)
 
-[node name="hatch" parent="." instance=ExtResource("9_8kqmo")]
-position = Vector2(184, 552)
-target_scene = ExtResource("11_ks4ph")
-
 [node name="front torch" parent="." instance=ExtResource("12_piali")]
 position = Vector2(328, 297)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+visible = false
 color = Color(1, 1, 1, 0.980392)
 blend_mode = 1
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b1ti3ijw23ck0"]
+[gd_scene load_steps=10 format=3 uid="uid://b1ti3ijw23ck0"]
 
 [ext_resource type="TileSet" uid="uid://bbhru5olfdv1g" path="res://tileset/level 1.tres" id="1_ceedy"]
 [ext_resource type="PackedScene" uid="uid://cibviepf0dui6" path="res://Scenes/ui.tscn" id="1_qi16h"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://b7ojnactafjho" path="res://Scenes/vertical_doors.tscn" id="5_4ywrj"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="6_82rxr"]
 [ext_resource type="PackedScene" uid="uid://b0ameeoim0f41" path="res://Scenes/hatch.tscn" id="7_a1dmb"]
-[ext_resource type="PackedScene" uid="uid://daf2ire6i74ww" path="res://Scenes/level_2.tscn" id="8_22kqc"]
 [ext_resource type="PackedScene" uid="uid://dlxqqa47bl6ms" path="res://Scenes/ligths/side_torch.tscn" id="10_cxv82"]
 
 [node name="Level 1" type="Node2D"]
@@ -47,12 +46,13 @@ position = Vector2(-82, 8)
 
 [node name="hatch" parent="." instance=ExtResource("7_a1dmb")]
 position = Vector2(-120, 8)
-target_scene = ExtResource("8_22kqc")
+target_scene = "res://Scenes/level_2.tscn"
 
 [node name="Necromancer" parent="." instance=ExtResource("3_cpyn6")]
 position = Vector2(-120, 8)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+visible = false
 color = Color(1, 1, 1, 0.980392)
 blend_mode = 1
 
