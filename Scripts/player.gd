@@ -27,9 +27,13 @@ var is_dead = false
 
 func _ready():
 	if light_radius_width or light_radius_height:
+		print(point_light_2d.texture.width)
 		point_light_2d.texture.width = light_radius_width
 		point_light_2d.texture.height = light_radius_height
-		
+	else:
+		point_light_2d.texture.width = 100
+		point_light_2d.texture.height = 100
+		print(point_light_2d.texture.width)
 	canvas_layer.visible = true
 	current_position = self.position
 	ui.potion_amount.text = str(attack_potion_count)

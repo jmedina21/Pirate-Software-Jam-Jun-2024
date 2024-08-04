@@ -52,7 +52,6 @@ target_scene = "res://Scenes/level_2.tscn"
 position = Vector2(-120, 8)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-visible = false
 color = Color(1, 1, 1, 0.980392)
 blend_mode = 1
 

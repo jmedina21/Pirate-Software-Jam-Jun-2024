@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmqw6lh1jhguc"
-path="res://.godot/imported/shadow enemy eyes closed2.png-c294900cf7d7af78bd4b34c86798bcfd.ctex"
+uid="uid://gcpboaicnlmr"
+path="res://.godot/imported/necromancer idle.png-0457cd78c47062fd35b0496ef44df02b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/shadow enemy eyes closed2.png"
-dest_files=["res://.godot/imported/shadow enemy eyes closed2.png-c294900cf7d7af78bd4b34c86798bcfd.ctex"]
+source_file="res://Assets/necromancer idle.png"
+dest_files=["res://.godot/imported/necromancer idle.png-0457cd78c47062fd35b0496ef44df02b.ctex"]
 
 [params]
 
