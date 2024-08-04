@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlxqqa47bl6ms"]
+
+[ext_resource type="Texture2D" uid="uid://chwkvbtdt8g2m" path="res://Assets/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="1_virpo"]
+
+[sub_resource type="Gradient" id="Gradient_sww7q"]
+offsets = PackedFloat32Array(0, 0.67658)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gxvst"]
+gradient = SubResource("Gradient_sww7q")
+width = 86
+height = 86
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="side torch" type="StaticBody2D"]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 1, 0.52549, 1)
+texture = SubResource("GradientTexture2D_gxvst")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.839286, 0.884615)
+texture = ExtResource("1_virpo")
+region_enabled = true
+region_rect = Rect2(16, 146, 6, 13)

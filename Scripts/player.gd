@@ -10,10 +10,15 @@ extends CharacterBody2D
 @onready var attack_sound = $attack_sound
 @onready var color_rect = $CanvasLayer/ColorRect
 @onready var animation_player = $AnimationPlayer
+@onready var canvas_layer = $CanvasLayer
+@onready var point_light_2d = $PointLight2D
 
-var potion = preload("res://Scenes/damage_potion.tscn")
 @export var attack_potion_count: int
 @export var attack_cd_time: float = 0.6
+@export var light_radius_width: int
+@export var light_radius_height: int
+
+var potion = preload("res://Scenes/damage_potion.tscn")
 var attack_on_cooldown = false
 var char_direction: String = 'right'
 var arrow_direction: String = 'right'
@@ -21,6 +26,11 @@ var arrow_direction: String = 'right'
 var is_dead = false
 
 func _ready():
+	if light_radius_width or light_radius_height:
+		point_light_2d.texture.width = light_radius_width
+		point_light_2d.texture.height = light_radius_height
+		
+	canvas_layer.visible = true
 	current_position = self.position
 	ui.potion_amount.text = str(attack_potion_count)
 	color_rect.visible = false
@@ -47,7 +57,7 @@ func _input(event):
 		sprite_2d.flip_h = false
 		movement_sound.play()
 	elif event.is_action_pressed("up"):
-		if arrow_direction != 'up':
+		if arrow_direction != 'up':                
 			update_arrow_position('up')
 			char_direction = 'up'
 			return
